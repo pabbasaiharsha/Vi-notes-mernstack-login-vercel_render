@@ -1,0 +1,116 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Page background */
+body {
+  font-family: Arial, sans-serif;
+  background:#190940;
+  padding: 80px;
+
+}
+
+
+
+/* Navbar */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgb(242, 222, 246);
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Logo */
+nav img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+
+/* Heading */
+#heading {
+  font-size: 50px;
+  font-weight: bold;
+  color: #321678;
+  margin-left: 20px;
+ 
+}
+
+/* Nav links */
+nav a {
+  margin-left: 20px;
+  
+ color: rgb(123, 88, 211);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+
+
+/* Center container */
+.container {
+  margin: 80px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: space-between;
+  background:rgb(242, 222, 246);
+  padding: 40px;
+  border-radius: 12px;
+    width: 100%;
+  max-width: 500px;
+  box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.15);
+}
+
+/* Heading */
+h1 {
+  font-size: 40px;   
+  text-align: center;
+  margin-bottom: 20px;
+  color: #321678;
+}
+
+/* Form labels */
+label {
+   font-size: 25px;
+  display: block;
+  margin-top: 12px;
+  color: #261FB3;
+  font-weight: bold;
+}
+
+/* Inputs */
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* Button section */
+.buttons {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Button */
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.submitBtn {
+  background: #d53232;
+  color: white;
+}
+
