@@ -1,4 +1,5 @@
 import '../App.css'
+
 const apiUrl = import.meta.env.VITE_API_URL;
 function Register(){
     const handleRegister=async (e:any)=>{
@@ -41,6 +42,7 @@ catch(err){
 }
 }
     }
+ 
 return (
     <div >
   
@@ -50,6 +52,7 @@ return (
 <label>Email : <input type="text" name="email" required autoComplete="off"/></label>
 <label>Password : <input type="password"
 name="password" required autoComplete="off"/></label>
+<p id="rules"></p>
 <label>Confirm Password : <input type="password"
 name="cpassword" required autoComplete="off"/></label>
 
