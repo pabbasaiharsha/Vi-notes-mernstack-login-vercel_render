@@ -15,7 +15,10 @@ dotenv.config();
 
 const app=express();
 //CORS is a browser security feature that controls which frontends are allowed to access your backend APIs.
-app.use(cors({origin: "http://localhost:5173"}));//Only  React app can access backend
+app.use(cors({  origin: [
+    "http://localhost:5173",
+    "https://vi-notes-mernstack-login-vercel-ren.vercel.app"
+  ],}));//Only  React app can access backend
 //HTTP only sends text (string) or binary
 // Reads incoming request
 // Checks header:Content-Type: application/json
