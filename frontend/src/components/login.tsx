@@ -57,7 +57,7 @@ body:JSON.stringify({token})
 });
 
 const data= await res.json();
-
+console.log(data);
 if(data.success){
   //storing token
   localStorage.setItem("token", data.token);

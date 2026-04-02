@@ -29,7 +29,10 @@ mongoose.connect(process.env.MONGO_URI)//"mongodb://localhost:27017/mydb"
 
 const UserSchema=new mongoose.Schema({
     email:{type:String,unique: true},
-    password:String
+    password:String,
+        name:String,
+    picture:String,
+    isGoogleUser:Boolean
 });
 
 const verifier=mongoose.model("User",UserSchema);
@@ -56,14 +59,14 @@ if(!user){
   });
 
 }
-    const t=jwt.sign(
+    const token=jwt.sign(
         {userId:user._id},
-         "secretkey",
+        process.env.JWT_SECRET,
         {expiresIn:"1h"}
     );
    return res.json({
         success:true,
-        t
+        token
     })
 
 
@@ -94,7 +97,7 @@ app.post("/login",async (req,res)=>{
 //Without JWT, your app cannot remember the user across requests, making authentication incomplete or inefficient.
         const token = jwt.sign(
       { userId: user._id },
-      "secretkey",   
+   process.env.JWT_SECRET,  
       { expiresIn: "1h" }
     );
 
