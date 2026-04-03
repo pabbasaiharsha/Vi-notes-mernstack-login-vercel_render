@@ -86,7 +86,10 @@ name="password" required autoComplete="off"/></label>
 
 </div>
 </form>
-<div style={{justifyContent:'center',alignItems:'center',padding:20}}>
+<div style={{ marginTop: "20px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center" }}>
 <GoogleLogin  
   onSuccess={handleGoogle}  
   onError={() => console.log("Login Failed")}  
