@@ -8,18 +8,16 @@
 /* Page background */
 body {
   font-family: Arial, sans-serif;
-  background:#190940;
-  padding: 80px;
-
+  background: #190940;
+  padding: 40px 20px; /* ✅ reduced for mobile */
 }
-
-
 
 /* Navbar */
 nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap; /* ✅ allows wrapping on small screens */
   background: rgb(242, 222, 246);
   padding: 10px 20px;
   border-radius: 10px;
@@ -29,48 +27,42 @@ nav {
 /* Logo */
 nav img {
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
+  width: 70px;  /* ✅ smaller for mobile */
+  height: 70px;
 }
 
 /* Heading */
 #heading {
-  font-size: 50px;
+  font-size: 32px; /* ✅ reduced */
   font-weight: bold;
   color: #321678;
-  margin-left: 20px;
- 
+  margin-left: 10px;
 }
 
 /* Nav links */
 nav a {
-  margin-left: 20px;
-  
- color: rgb(123, 88, 211);
-  font-size: 20px;
+  margin-left: 15px;
+  color: rgb(123, 88, 211);
+  font-size: 16px; /* ✅ reduced */
   font-weight: 500;
 }
 
-
-
 /* Center container */
 .container {
-  margin: 80px auto;
+  margin: 40px auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: space-between;
-  background:rgb(242, 222, 246);
-  padding: 40px;
+  background: rgb(242, 222, 246);
+  padding: 25px; /* ✅ reduced */
   border-radius: 12px;
-    width: 100%;
-  max-width: 500px;
+  width: 100%;
+  max-width: 400px; /* ✅ better for mobile */
   box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.15);
 }
 
 /* Heading */
 h1 {
-  font-size: 40px;   
+  font-size: 28px; /* ✅ responsive */
   text-align: center;
   margin-bottom: 20px;
   color: #321678;
@@ -78,7 +70,7 @@ h1 {
 
 /* Form labels */
 label {
-   font-size: 25px;
+  font-size: 18px; /* ✅ reduced */
   display: block;
   margin-top: 12px;
   color: #261FB3;
@@ -88,29 +80,59 @@ label {
 /* Inputs */
 input {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin-top: 6px;
   border-radius: 6px;
   border: 1px solid #ccc;
+  font-size: 16px; /* ✅ better typing on mobile */
 }
 
 /* Button section */
 .buttons {
   margin-top: 20px;
-  text-align: center;
 }
 
 /* Button */
 button {
-  padding: 10px 20px;
+  width: 100%; /* ✅ full width for mobile */
+  padding: 12px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
 }
 
+/* Submit Button */
 .submitBtn {
   background: #d53232;
   color: white;
 }
 
+/* Google button container */
+.googleBtnContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* 📱 Mobile adjustments */
+@media (max-width: 480px) {
+  body {
+    padding: 20px 10px;
+  }
+
+  #heading {
+    font-size: 24px;
+    text-align: center;
+    width: 100%;
+  }
+
+  nav {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  nav a {
+    font-size: 14px;
+  }
+}
