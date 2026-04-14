@@ -108,12 +108,7 @@ button {
   color: white;
 }
 
-/* Google button container */
-.googleBtnContainer {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
+
 
 /* 📱 Mobile adjustments */
 @media (max-width: 480px) {

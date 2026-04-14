@@ -1,3 +1,7 @@
+## 🌐 Live Application
+
+- Frontend deployed on Vercel:
+  - https://vi-notes-mernstack-login-vercel-ren.vercel.app
 # BACKEND
 
 ## MONGODB.js

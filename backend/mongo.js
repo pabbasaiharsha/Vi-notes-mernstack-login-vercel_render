@@ -40,44 +40,69 @@ const UserSchema=new mongoose.Schema({
 
 const verifier=mongoose.model("User",UserSchema);
 
-const client = new OAuth2Client(process.env.client_id);
-app.post("/auth/google",async (req,res)=>{
-const {token}=req.body;
+const client = new OAuth2Client(process.env.client_id);//Google client ID from .env
+app.post("/auth/google", async (req, res) => {
+  const { token: googleToken } = req.body;
 
-try{
-const ticket=await client.verifyIdToken({
-    idToken:token,
-    audience:process.env.client_id
-})
-const payload=ticket.getPayload();
-const {email,name,picture}=payload;
-let user=await verifier.findOne({email});
-if(!user){
-    
-     user = await verifier.create({
-    email,
-    name,
-    picture,
-    isGoogleUser: true
-  });
+  try {
+    if (!googleToken) {
+      return res.status(400).json({
+        success: false,
+        message: "No token received from frontend",
+      });
+    }
 
-}
-    const token=jwt.sign(
-        {userId:user._id},
-        process.env.JWT_SECRET,
-        {expiresIn:"1h"}
+    // Verify token with Google
+    const ticket = await client.verifyIdToken({
+      idToken: googleToken,
+      audience: process.env.client_id,
+    });
+
+    const payload = ticket.getPayload();
+
+    if (!payload) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid Google token",
+      });
+    }
+
+    const { email, name, picture } = payload;
+
+    // Check if user exists
+    let user = await verifier.findOne({ email });
+
+    if (!user) {
+      // Create new user
+      user = await verifier.create({
+        email,
+        name,
+        picture,
+        isGoogleUser: true,
+      });
+    }
+
+    // Generate JWT
+    const jwtToken = jwt.sign(
+      { userId: user._id },
+      process.env.JWT_SECRET,
+      { expiresIn: "1h" }
     );
-   return res.json({
-        success:true,
-        token
-    })
 
+    return res.json({
+      success: true,
+      token: jwtToken,
+    });
 
-}catch(err){
-    console.error("GOOGLE AUTH ERROR:", err); 
-res.status(500).json({success:false,message:"Server error"})
-}
-})
+  } catch (err) {
+    console.error("GOOGLE AUTH ERROR FULL:", err);
+
+    return res.status(500).json({
+      success: false,
+      message: err.message || "Google authentication failed",
+    });
+  }
+});
 app.post("/login",async (req,res)=>{
     console.log(req.body);
     const {email,password}=req.body;
